@@ -1,0 +1,1 @@
+c:\users\martin\documents\visual studio 2015\Projects\Connect4\Connect4\bin\Debug\Connect4.exe.config
