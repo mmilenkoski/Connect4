@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Connect4
 {
@@ -19,12 +21,74 @@ namespace Connect4
     }
     class Game
     {
-        public static readonly int N = 6;
-        public static readonly int M = 6;
+        public static readonly int N = 5;
+        public static readonly int M = 4;
         public static readonly int maxDepth = 7;
         public static HashSet<String> increment;
         public static HashSet<String> decrement;
         public static Dictionary<string, int> visited;
+        public int[,] board;
+
+        public Game()
+        {
+            increment = new HashSet<String>();
+            decrement = new HashSet<String>();
+            visited = new Dictionary<string, int>();
+            System.IO.StreamReader incFile = new System.IO.StreamReader("increment.txt");
+            System.IO.StreamReader decFile = new System.IO.StreamReader("decrement.txt");
+            string line;
+            while ((line = incFile.ReadLine()) != null)
+            {
+                increment.Add(line);
+            }
+            while ((line = decFile.ReadLine()) != null)
+            {
+                decrement.Add(line);
+            }
+            board = new int[N, M];
+        }
+
+        public void playerMove()
+        {
+
+        }
+
+        public void play(int choice)
+        {
+             playerMove(board, choice);
+             printBoard(board); // DEBUGGING
+             int winner = checkWinner(board);
+             if (winner != -1)
+             {
+                 if (winner == 1)
+                 {
+                     Console.WriteLine("Player wins!");
+                 }
+                 else
+                 {
+                     Console.WriteLine("Computer wins!");
+                 }
+             }
+             computerMove(board);
+             printBoard(board); // DEBUGGING
+             winner = checkWinner(board);
+             if (winner != -1)
+             {
+                 if (winner == 1)
+                 {
+                     Console.WriteLine("Player wins!");
+                 }
+                 else
+                 {
+                     Console.WriteLine("Computer wins!");
+                 }
+             }
+         }
+
+
+
+
+
 
         // Glavnta funkcija za igrata vo konzola
         /*static void Main(string[] args)
@@ -80,7 +144,7 @@ namespace Connect4
 
 
         // proveruva dali ima pobednik vo momentalnata sostojba i go vrakja pobednikot ako ima
-        static int checkWinner(int[,] board)
+        public static int checkWinner(int[,] board)
         {
             for (int i = 0; i < N; i++)
             {
@@ -133,8 +197,9 @@ namespace Connect4
 
         }
 
+
         // ova bese za konzolnata aplikacija, sega bi trebalo da se promeni vo funkcija draw
-        static void printBoard(int[,] board)
+        public static void printBoard(int[,] board)
         {
             for (int i = 0; i < N; i++)
             {
@@ -146,9 +211,9 @@ namespace Connect4
             }
         }
 
-        
 
-        static void playerMove(int[,] board)
+
+        public static void playerMove(int[,] board)
         {
             // Treba da ja prima kolonata sto ja kliknal igracot vo "choice" i ostanata logika
             // moze da ostane
@@ -170,7 +235,20 @@ namespace Connect4
             }*/
 
         }
-        static void computerMove(int[,] board)
+        public static void playerMove(int[,] board, int choice)
+        {
+            // Treba da ja prima kolonata sto ja kliknal igracot vo "choice" i ostanata logika
+            // moze da ostane
+            for (int i = N - 1; i >= 0; i--)
+            {
+                if (board[i, choice] == 0)
+                {
+                    board[i, choice] = 1;
+                    break;
+                }
+            }
+        }
+        public static void computerMove(int[,] board)
         {
             // Kod za debagiranje vo konzola
 
@@ -199,7 +277,7 @@ namespace Connect4
             }
         }
 
-        
+
 
         // gi vrakja kolonite sto ne se polni 
         static List<int> validMoves(int[,] board)
@@ -211,6 +289,7 @@ namespace Connect4
             }
             return moves;
         }
+
 
         // ja prima momentalnata sostojba, koj igrac go napravil potegot i vo koja kolona
         // i go boi prvoto prazno mesto vo taa kolona
@@ -389,7 +468,6 @@ namespace Connect4
             }
             return count;
         }
-
 
     }
 }
