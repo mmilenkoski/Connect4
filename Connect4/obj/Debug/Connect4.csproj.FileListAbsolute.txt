@@ -1,1 +1,10 @@
 c:\users\martin\documents\visual studio 2015\Projects\Connect4\Connect4\bin\Debug\Connect4.exe.config
+C:\Users\Blagojce\Source\Repos\Connect4\Connect4\bin\Debug\Connect4.exe.config
+C:\Users\Blagojce\Source\Repos\Connect4\Connect4\bin\Debug\Connect4.exe
+C:\Users\Blagojce\Source\Repos\Connect4\Connect4\bin\Debug\Connect4.pdb
+C:\Users\Blagojce\Source\Repos\Connect4\Connect4\obj\Debug\Connect4.csprojResolveAssemblyReference.cache
+C:\Users\Blagojce\Source\Repos\Connect4\Connect4\obj\Debug\Connect4.Form1.resources
+C:\Users\Blagojce\Source\Repos\Connect4\Connect4\obj\Debug\Connect4.Properties.Resources.resources
+C:\Users\Blagojce\Source\Repos\Connect4\Connect4\obj\Debug\Connect4.csproj.GenerateResource.Cache
+C:\Users\Blagojce\Source\Repos\Connect4\Connect4\obj\Debug\Connect4.exe
+C:\Users\Blagojce\Source\Repos\Connect4\Connect4\obj\Debug\Connect4.pdb
