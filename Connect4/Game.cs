@@ -19,18 +19,32 @@ namespace Connect4
             score = s;
         }
     }
+    [Serializable]
     class Game
     {
-        public static readonly int N = 5;
-        public static readonly int M = 4;
-        public static readonly int maxDepth = 7;
-        public static HashSet<String> increment;
-        public static HashSet<String> decrement;
-        public static Dictionary<string, int> visited;
+        public const int PLAYER = 1;
+        public const int COMPUTER = 2;
+        public const int DRAW = 3;
+        public readonly int N;
+        public readonly int M;
+        public readonly int maxDepth;
+        public HashSet<String> increment;
+        public HashSet<String> decrement;
+        public Dictionary<string, int> visited;
         public int[,] board;
+        private int panelWidth;
+        private int panelHeight;
+        private int circleWidth;
+        private int circleHeight;
+        public int Radius { get; set;  }
+        Stack<int> undo;
+        Color player1;
+        Color player2;
 
-        public Game()
+        public Game(int N, int M, int maxDepth, int panelHeight, int panelWidth, Color p1, Color p2)
         {
+            player1 = p1;
+            player2 = p2;
             increment = new HashSet<String>();
             decrement = new HashSet<String>();
             visited = new Dictionary<string, int>();
@@ -46,44 +60,84 @@ namespace Connect4
                 decrement.Add(line);
             }
             board = new int[N, M];
+            this.N = N;
+            this.M = M;
+            this.maxDepth = maxDepth;
+            resize(panelHeight, panelWidth);
+            undo = new Stack<int>();
         }
 
-        public void playerMove()
+        public void resize(int panelHeight, int panelWidth)
         {
-
+            this.panelHeight = panelHeight;
+            this.panelWidth = panelWidth;
+            circleWidth = panelWidth / M;
+            circleHeight = panelHeight / N;
+            Radius = Math.Min(circleWidth, circleHeight) / 2;
+            Radius -= 5;
         }
+
+        public void printBoard(Graphics g)
+        {
+            Pen pen = new Pen(Color.Black, 2);
+            g.Clear(Color.Blue);
+            for (int i = 1; i <= M - 1; ++i)
+            {
+                g.DrawLine(pen, new Point(i * circleWidth, 0), new Point(i * circleWidth, panelHeight));
+
+            }
+            for (int i = 0; i < N; ++i)
+            {
+                for (int j = 0; j < M; ++j)
+                {
+                    Color color = Color.White;
+                    if (board[i, j] == 1)
+                        color = player1;
+                    if (board[i, j] == 2)
+                        color = player2;
+                    Brush brush = new SolidBrush(color);
+                    int x = (j * circleWidth) + (circleWidth / 2) - Radius;
+                    int y = (i * circleHeight) + (circleHeight / 2) - Radius;
+                    g.FillEllipse(brush, x, y, 2 * Radius, 2 * Radius);
+                    brush.Dispose();
+                }
+            }
+            pen.Dispose();
+        }
+
+
 
         public void play(int choice)
         {
-             playerMove(board, choice);
-             printBoard(board); // DEBUGGING
-             int winner = checkWinner(board);
-             if (winner != -1)
-             {
-                 if (winner == 1)
-                 {
-                     Console.WriteLine("Player wins!");
-                 }
-                 else
-                 {
-                     Console.WriteLine("Computer wins!");
-                 }
-             }
-             computerMove(board);
-             printBoard(board); // DEBUGGING
-             winner = checkWinner(board);
-             if (winner != -1)
-             {
-                 if (winner == 1)
-                 {
-                     Console.WriteLine("Player wins!");
-                 }
-                 else
-                 {
-                     Console.WriteLine("Computer wins!");
-                 }
-             }
-         }
+           // playerMove(choice);
+            printBoard(board); // DEBUGGING
+            int winner = checkWinner();
+            if (winner != -1)
+            {
+                if (winner == 1)
+                {
+                    Console.WriteLine("Player wins!");
+                }
+                else
+                {
+                    Console.WriteLine("Computer wins!");
+                }
+            }
+            computerMove();
+            printBoard(board); // DEBUGGING
+            winner = checkWinner();
+            if (winner != -1)
+            {
+                if (winner == 1)
+                {
+                    Console.WriteLine("Player wins!");
+                }
+                else
+                {
+                    Console.WriteLine("Computer wins!");
+                }
+            }
+        }
 
 
 
@@ -142,9 +196,75 @@ namespace Connect4
 
         }*/
 
+        public bool checkDraw()
+        {
+            for (int i = 0; i < N; ++i)
+            {
+                for (int j = 0; j < M; ++j)
+                {
+                    if (board[i, j] == 0) return false;
+                }
+            }
+            return true;
+        }
 
         // proveruva dali ima pobednik vo momentalnata sostojba i go vrakja pobednikot ako ima
-        public static int checkWinner(int[,] board)
+        public int checkWinner()
+        {
+            if (checkDraw()) return 3;
+
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j <= M - 4; j++)
+                {
+                    int t = board[i, j];
+                    if (t != 0 && board[i, j + 1] == t && board[i, j + 2] == t && board[i, j + 3] == t)
+                    {
+                        return t;
+                    }
+                }
+            }
+
+            for (int i = 0; i <= N - 4; i++)
+            {
+                for (int j = 0; j < M; j++)
+                {
+                    int t = board[i, j];
+                    if (t != 0 && board[i + 1, j] == t && board[i + 2, j] == t && board[i + 3, j] == t)
+                    {
+                        return t;
+                    }
+                }
+            }
+
+            for (int i = 0; i <= N - 4; i++)
+            {
+                for (int j = 0; j <= M - 4; j++)
+                {
+                    int t = board[i, j];
+                    if (t != 0 && board[i + 1, j + 1] == t && board[i + 2, j + 2] == t && board[i + 3, j + 3] == t)
+                    {
+                        return t;
+                    }
+                }
+            }
+
+            for (int i = 0; i <= N - 4; i++)
+            {
+                for (int j = 3; j < M; j++)
+                {
+                    int t = board[i, j];
+                    if (t != 0 && board[i + 1, j - 1] == t && board[i + 2, j - 2] == t && board[i + 3, j - 3] == t)
+                    {
+                        return t;
+                    }
+                }
+            }
+            return -1;
+        }
+
+
+        public int checkWinner(int[,] board)
         {
             for (int i = 0; i < N; i++)
             {
@@ -198,8 +318,9 @@ namespace Connect4
         }
 
 
+
         // ova bese za konzolnata aplikacija, sega bi trebalo da se promeni vo funkcija draw
-        public static void printBoard(int[,] board)
+        public void printBoard(int[,] board)
         {
             for (int i = 0; i < N; i++)
             {
@@ -213,7 +334,7 @@ namespace Connect4
 
 
 
-        public static void playerMove(int[,] board)
+        public void playerMove(int[,] board)
         {
             // Treba da ja prima kolonata sto ja kliknal igracot vo "choice" i ostanata logika
             // moze da ostane
@@ -235,8 +356,12 @@ namespace Connect4
             }*/
 
         }
-        public static void playerMove(int[,] board, int choice)
+        public bool playerMove(Point p)
         {
+            int choice = p.X / circleWidth;
+            if(!validMoves(board).Contains(choice))
+                return false;
+            Console.WriteLine("Choice: " + choice); //DEBUGGING!
             // Treba da ja prima kolonata sto ja kliknal igracot vo "choice" i ostanata logika
             // moze da ostane
             for (int i = N - 1; i >= 0; i--)
@@ -247,8 +372,10 @@ namespace Connect4
                     break;
                 }
             }
+            undo.Push(choice);
+            return true;
         }
-        public static void computerMove(int[,] board)
+        public void computerMove()
         {
             // Kod za debagiranje vo konzola
 
@@ -264,6 +391,7 @@ namespace Connect4
 
             // Ova moze da ostane nepromeneto ama da se povikuva posle sekoj poteg na igracot
             Move m = minimax(board, 0, 2, int.MinValue, int.MaxValue);
+            
             if (m.move != -1 && m.move != -2)
             {
                 for (int i = N - 1; i >= 0; i--)
@@ -274,13 +402,14 @@ namespace Connect4
                         break;
                     }
                 }
+                undo.Push(m.move);
             }
         }
 
 
 
         // gi vrakja kolonite sto ne se polni 
-        static List<int> validMoves(int[,] board)
+        private List<int> validMoves(int[,] board)
         {
             List<int> moves = new List<int>();
             for (int i = 0; i < M; i++)
@@ -293,7 +422,7 @@ namespace Connect4
 
         // ja prima momentalnata sostojba, koj igrac go napravil potegot i vo koja kolona
         // i go boi prvoto prazno mesto vo taa kolona
-        static int[,] applyMove(int[,] board, int column, int player)
+        private int[,] applyMove(int[,] board, int column, int player)
         {
             int[,] newBoard = new int[N, M];
             for (int i = 0; i < N; i++)
@@ -315,7 +444,7 @@ namespace Connect4
         }
 
         //Minimax so alfa beta kastrenje
-        static Move minimax(int[,] board, int depth, int player, int a, int b)
+        public Move minimax(int[,] board, int depth, int player, int a, int b)
         {
             int alpha = a;
             int beta = b;
@@ -396,7 +525,7 @@ namespace Connect4
 
 
         // Funkcija za evaluacija
-        static int getHeuristic(int[,] board)
+        public int getHeuristic(int[,] board)
         {
             int winner = checkWinner(board);
             if (winner != -1)
@@ -467,6 +596,32 @@ namespace Connect4
                 }
             }
             return count;
+        }
+
+        public void undoMove()
+        {
+            if(undo.Count == 0)
+            {
+                return;
+            }
+            int p = undo.Pop();
+            for(int i =0;i< N; i++)
+            {
+                if(board[i, p] != 0)
+                {
+                    board[i, p] = 0;
+                    break;
+                }
+            }
+            int c = undo.Pop();
+            for (int i = 0; i < N; i++)
+            {
+                if (board[i, c] != 0)
+                {
+                    board[i, c] = 0;
+                    break;
+                }
+            }
         }
 
     }
