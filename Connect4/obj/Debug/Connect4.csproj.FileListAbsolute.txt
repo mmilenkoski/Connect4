@@ -8,3 +8,43 @@ C:\Users\Blagojce\Source\Repos\Connect4\Connect4\obj\Debug\Connect4.Properties.R
 C:\Users\Blagojce\Source\Repos\Connect4\Connect4\obj\Debug\Connect4.csproj.GenerateResource.Cache
 C:\Users\Blagojce\Source\Repos\Connect4\Connect4\obj\Debug\Connect4.exe
 C:\Users\Blagojce\Source\Repos\Connect4\Connect4\obj\Debug\Connect4.pdb
+C:\Users\Martin\Documents\Visual Studio 2015\Projects\Connect4\Connect4\obj\Debug\Connect4.exe
+C:\Users\Martin\Documents\Visual Studio 2015\Projects\Connect4\Connect4\obj\Debug\Connect4.pdb
+C:\Users\Martin\Documents\Visual Studio 2015\Projects\Connect4\Connect4\bin\Debug\Connect4.exe
+C:\Users\Martin\Documents\Visual Studio 2015\Projects\Connect4\Connect4\bin\Debug\Connect4.pdb
+C:\Users\Martin\Documents\Visual Studio 2015\Projects\Connect4\Connect4\obj\Debug\Connect4.csprojResolveAssemblyReference.cache
+C:\Users\Martin\Documents\Visual Studio 2015\Projects\Connect4\Connect4\obj\Debug\Connect4.Form1.resources
+C:\Users\Martin\Documents\Visual Studio 2015\Projects\Connect4\Connect4\obj\Debug\Connect4.Properties.Resources.resources
+C:\Users\Martin\Documents\Visual Studio 2015\Projects\Connect4\Connect4\obj\Debug\Connect4.csproj.GenerateResource.Cache
+C:\Users\Blagojce\Dropbox\Connect4\Connect4\Connect4\bin\Debug\Connect4.exe.config
+C:\Users\Blagojce\Dropbox\Connect4\Connect4\Connect4\obj\Debug\Connect4.exe
+C:\Users\Blagojce\Dropbox\Connect4\Connect4\Connect4\obj\Debug\Connect4.pdb
+C:\Users\Blagojce\Dropbox\Connect4\Connect4\Connect4\obj\Debug\Connect4.Form1.resources
+C:\Users\Blagojce\Dropbox\Connect4\Connect4\Connect4\obj\Debug\Connect4.Properties.Resources.resources
+C:\Users\Blagojce\Dropbox\Connect4\Connect4\Connect4\obj\Debug\Connect4.csproj.GenerateResource.Cache
+C:\Users\Blagojce\Dropbox\Connect4\Connect4\Connect4\bin\Debug\Connect4.exe
+C:\Users\Blagojce\Dropbox\Connect4\Connect4\Connect4\bin\Debug\Connect4.pdb
+C:\Users\Martin\Downloads\Connect4new\Connect4\Connect4\bin\Debug\Connect4.exe.config
+C:\Users\Martin\Downloads\Connect4new\Connect4\Connect4\obj\Debug\Connect4.exe
+C:\Users\Martin\Downloads\Connect4new\Connect4\Connect4\obj\Debug\Connect4.pdb
+C:\Users\Martin\Downloads\Connect4new\Connect4\Connect4\obj\Debug\Connect4.csprojResolveAssemblyReference.cache
+C:\Users\Martin\Downloads\Connect4new\Connect4\Connect4\obj\Debug\Connect4.Form1.resources
+C:\Users\Martin\Downloads\Connect4new\Connect4\Connect4\obj\Debug\Connect4.Properties.Resources.resources
+C:\Users\Martin\Downloads\Connect4new\Connect4\Connect4\obj\Debug\Connect4.csproj.GenerateResource.Cache
+C:\Users\Martin\Downloads\Connect4new\Connect4\Connect4\bin\Debug\Connect4.exe
+C:\Users\Martin\Downloads\Connect4new\Connect4\Connect4\bin\Debug\Connect4.pdb
+C:\Users\Martin\Downloads\Connect4new\Connect4\Connect4\obj\Debug\Connect4.StartForm.resources
+F:\FINKI\IV semestar\Vizuelno programiranje\Connect4new\Connect4\Connect4\bin\Debug\Connect4.exe.config
+F:\FINKI\IV semestar\Vizuelno programiranje\Connect4new\Connect4\Connect4\obj\Debug\Connect4.exe
+F:\FINKI\IV semestar\Vizuelno programiranje\Connect4new\Connect4\Connect4\obj\Debug\Connect4.pdb
+F:\FINKI\IV semestar\Vizuelno programiranje\Connect4new\Connect4\Connect4\bin\Debug\Connect4.exe
+F:\FINKI\IV semestar\Vizuelno programiranje\Connect4new\Connect4\Connect4\bin\Debug\Connect4.pdb
+F:\FINKI\IV semestar\Vizuelno programiranje\Connect4new\Connect4\Connect4\obj\Debug\Connect4.csprojResolveAssemblyReference.cache
+F:\FINKI\IV semestar\Vizuelno programiranje\Connect4new\Connect4\Connect4\obj\Debug\Connect4.Form1.resources
+F:\FINKI\IV semestar\Vizuelno programiranje\Connect4new\Connect4\Connect4\obj\Debug\Connect4.Properties.Resources.resources
+F:\FINKI\IV semestar\Vizuelno programiranje\Connect4new\Connect4\Connect4\obj\Debug\Connect4.StartForm.resources
+F:\FINKI\IV semestar\Vizuelno programiranje\Connect4new\Connect4\Connect4\obj\Debug\Connect4.csproj.GenerateResource.Cache
+F:\FINKI\IV semestar\Vizuelno programiranje\Connect4new\Connect4\Connect4\obj\Debug\Connect4.Rules.resources
+C:\Users\Lodii\Documents\GitHub\Connect4\Connect4\bin\Debug\Connect4.exe.config
+C:\Users\Lodii\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.exe
+C:\Users\Lodii\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.pdb
