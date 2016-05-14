@@ -48,3 +48,14 @@ F:\FINKI\IV semestar\Vizuelno programiranje\Connect4new\Connect4\Connect4\obj\De
 C:\Users\Lodii\Documents\GitHub\Connect4\Connect4\bin\Debug\Connect4.exe.config
 C:\Users\Lodii\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.exe
 C:\Users\Lodii\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.pdb
+C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\bin\Debug\Connect4.exe.config
+C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.exe
+C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.pdb
+C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\bin\Debug\Connect4.exe
+C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\bin\Debug\Connect4.pdb
+C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.csprojResolveAssemblyReference.cache
+C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.Form1.resources
+C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.Properties.Resources.resources
+C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.Rules.resources
+C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.StartForm.resources
+C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.csproj.GenerateResource.Cache
