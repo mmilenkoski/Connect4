@@ -21,10 +21,10 @@ namespace Connect4
         public string FileName { get; set; }
         int time;
 
-        public Form1(int N , int M, Color p1, Color p2)
+        public Form1(int N , int M, int difficulty, Color p1, Color p2)
         {
             InitializeComponent();
-            game = new Game(N, M, 6, panel1.Height, panel1.Width, p1, p2);
+            game = new Game(N, M, difficulty, panel1.Height, panel1.Width, p1, p2);
             DoubleBuffered = true;
             g = panel1.CreateGraphics();
             FileName = "Untitled";
@@ -78,6 +78,7 @@ namespace Connect4
                     Console.WriteLine("Computer wins!");
                 } else if (winner == Game.DRAW)
                 {
+                    timer1.Stop();
                     MessageBox.Show("The board is full!", "Full!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     Close();
                     Console.WriteLine("Computer wins!");
@@ -96,8 +97,8 @@ namespace Connect4
             if (FileName == "Untitled")
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "Circles doc file (*.crl)|*.crl";
-                saveFileDialog.Title = "Save circles doc";
+                saveFileDialog.Filter = "Game file (*.game)|*.game";
+                saveFileDialog.Title = "Save game";
                 saveFileDialog.FileName = FileName;
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -116,8 +117,8 @@ namespace Connect4
         private void openFile()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Circles doc file (*.crl)|*.crl";
-            openFileDialog.Title = "Open Circles doc file";
+            openFileDialog.Filter = "Game file (*.game)|*.game";
+            openFileDialog.Title = "Open game";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 FileName = openFileDialog.FileName;
@@ -173,6 +174,7 @@ namespace Connect4
             textBox1.Text = time.ToString();
             if (time == 0)
             {
+                timer1.Stop();
                 MessageBox.Show("Game Over!", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
             }
@@ -180,29 +182,26 @@ namespace Connect4
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Abort;
             this.Close();
+            this.Dispose();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            timer1.Stop();
             Rules rules = new Rules();
-            this.Visible = false;
             DialogResult dr = rules.ShowDialog();
             if (dr == DialogResult.Cancel)
-            {
-                this.Visible = true;
-            }
+                timer1.Start();
+
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StartForm startForm = new StartForm();
-            this.Visible = false;
-            DialogResult dr = startForm.ShowDialog();
-            if (dr == DialogResult.Cancel)
-            {
-                this.Visible = true;
-            }
+            this.Close();
+            this.Dispose();
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
