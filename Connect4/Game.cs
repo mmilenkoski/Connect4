@@ -105,97 +105,6 @@ namespace Connect4
             pen.Dispose();
         }
 
-
-
-        public void play(int choice)
-        {
-           // playerMove(choice);
-            printBoard(board); // DEBUGGING
-            int winner = checkWinner();
-            if (winner != -1)
-            {
-                if (winner == 1)
-                {
-                    Console.WriteLine("Player wins!");
-                }
-                else
-                {
-                    Console.WriteLine("Computer wins!");
-                }
-            }
-            computerMove();
-            printBoard(board); // DEBUGGING
-            winner = checkWinner();
-            if (winner != -1)
-            {
-                if (winner == 1)
-                {
-                    Console.WriteLine("Player wins!");
-                }
-                else
-                {
-                    Console.WriteLine("Computer wins!");
-                }
-            }
-        }
-
-
-
-
-
-
-        // Glavnta funkcija za igrata vo konzola
-        /*static void Main(string[] args)
-        {
-            increment = new HashSet<String>();
-            decrement = new HashSet<String>();
-            visited = new Dictionary<string, int>();
-            System.IO.StreamReader incFile = new System.IO.StreamReader("increment.txt");
-            System.IO.StreamReader decFile = new System.IO.StreamReader("decrement.txt");
-            string line;
-            while ((line = incFile.ReadLine()) != null)
-            {
-                increment.Add(line);
-            }
-            while ((line = decFile.ReadLine()) != null)
-            {
-                decrement.Add(line);
-            }
-            int[,] board = new int[N, M];
-            int count = 0;
-            printBoard(board);
-            while (true)
-            {
-                if (count % 2 == 0)
-                {
-                    playerMove(board);
-                }
-                else
-                {
-                    computerMove(board);
-                }
-                count++;
-                printBoard(board);
-                int winner = checkWinner(board);
-                if (winner != -1)
-                {
-                    if (winner == 1)
-                    {
-                        Console.WriteLine("Player wins!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Computer wins!");
-                    }
-                    Console.ReadLine();
-                    break;
-                }
-
-
-            }
-
-        }*/
-
         public bool checkDraw()
         {
             for (int i = 0; i < N; ++i)
@@ -263,7 +172,6 @@ namespace Connect4
             return -1;
         }
 
-
         public int checkWinner(int[,] board)
         {
             for (int i = 0; i < N; i++)
@@ -319,7 +227,10 @@ namespace Connect4
 
 
 
-        // ova bese za konzolnata aplikacija, sega bi trebalo da se promeni vo funkcija draw
+
+
+
+        // DEBUGGING
         public void printBoard(int[,] board)
         {
             for (int i = 0; i < N; i++)
@@ -333,29 +244,7 @@ namespace Connect4
         }
 
 
-
-        public void playerMove(int[,] board)
-        {
-            // Treba da ja prima kolonata sto ja kliknal igracot vo "choice" i ostanata logika
-            // moze da ostane
-
-            /*Console.WriteLine("Player: ");
-            string line = Console.ReadLine();
-            int choice = -1;
-            int.TryParse(line, out choice);
-            if (choice != -1)
-            {
-                for (int i = N - 1; i >= 0; i--)
-                {
-                    if (board[i, choice] == 0)
-                    {
-                        board[i, choice] = 1;
-                        break;
-                    }
-                }
-            }*/
-
-        }
+        
         public bool playerMove(Point p)
         {
             int choice = p.X / circleWidth;
@@ -377,19 +266,7 @@ namespace Connect4
         }
         public void computerMove()
         {
-            // Kod za debagiranje vo konzola
-
-            /*Console.WriteLine("Computer: ");
-            Console.WriteLine("Choice: {0}", m.move);
-            List<int> moves = validMoves(board);
-            for (int i = 0; i < moves.Count; i++)
-            {
-                Console.Write(moves[i]);
-
-            }
-            Console.WriteLine();*/
-
-            // Ova moze da ostane nepromeneto ama da se povikuva posle sekoj poteg na igracot
+          // Ova moze da ostane nepromeneto ama da se povikuva posle sekoj poteg na igracot
             Move m = minimax(board, 0, 2, int.MinValue, int.MaxValue);
             
             if (m.move != -1 && m.move != -2)

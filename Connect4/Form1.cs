@@ -15,7 +15,7 @@ namespace Connect4
 {
     public partial class Form1 : Form
     {
-        System.Media.SoundPlayer startSoundPlayer = new System.Media.SoundPlayer(@"C:\Users\Martin\Music\pesna.wav");
+        System.Media.SoundPlayer startSoundPlayer = new System.Media.SoundPlayer("pesna.wav");
         private Graphics g;
         Game game;
         public string FileName { get; set; }
@@ -28,7 +28,7 @@ namespace Connect4
             DoubleBuffered = true;
             g = panel1.CreateGraphics();
             FileName = "Untitled";
-           // startSoundPlayer.Play();
+            startSoundPlayer.Play();
             time = 30;
             timer1.Start();
         }
@@ -50,14 +50,21 @@ namespace Connect4
                     timer1.Stop();
                     MessageBox.Show("Player wins!", "Winner!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     Close();
-                    Console.WriteLine("Player wins!");
+                    return;
                 }
                 else if (winner == Game.COMPUTER)
                 {
                     timer1.Stop();
                     MessageBox.Show("Computer wins!", "Winner!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     Close();
-                    Console.WriteLine("Computer wins!");
+                    return;
+                }
+                else if (winner == Game.DRAW)
+                {
+                    timer1.Stop();
+                    MessageBox.Show("The board is full!", "Full!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    Close();
+                    return;
                 }
                 game.computerMove();
                 game.printBoard(game.board); // DEBUGGING
@@ -68,20 +75,21 @@ namespace Connect4
                     timer1.Stop();
                     MessageBox.Show("Player wins!", "Winner!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     Close();
-                    Console.WriteLine("Player wins!");
+                    return;
                 }
                 else if (winner == Game.COMPUTER)
                 {
                     timer1.Stop();
                     MessageBox.Show("Computer wins!", "Winner!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     Close();
-                    Console.WriteLine("Computer wins!");
+                    return;
+                 
                 } else if (winner == Game.DRAW)
                 {
                     timer1.Stop();
                     MessageBox.Show("The board is full!", "Full!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     Close();
-                    Console.WriteLine("Computer wins!");
+                    return;
                 }
                 time = 30;
                 textBox1.Text = time.ToString();
@@ -208,6 +216,16 @@ namespace Connect4
         {
             FileName = "Untitled";
             saveFile();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            startSoundPlayer.Stop();
         }
     }
 }

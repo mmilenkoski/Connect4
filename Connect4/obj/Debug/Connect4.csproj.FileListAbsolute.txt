@@ -59,3 +59,5 @@ C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.Properti
 C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.Rules.resources
 C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.StartForm.resources
 C:\Users\Blagojce\Documents\GitHub\Connect4\Connect4\obj\Debug\Connect4.csproj.GenerateResource.Cache
+C:\Users\Martin\Documents\Visual Studio 2015\Projects\Connect4\Connect4\obj\Debug\Connect4.Rules.resources
+C:\Users\Martin\Documents\Visual Studio 2015\Projects\Connect4\Connect4\obj\Debug\Connect4.StartForm.resources
